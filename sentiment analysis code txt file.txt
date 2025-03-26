@@ -1,0 +1,32 @@
+from nltk.sentiment.vader import SentimentIntensityAnalyzer 
+# Download Vader Lexicon for sentiment analysis 
+nltk.download('vader_lexicon') 
+
+# Initialize the VADER sentiment analyzer 
+sid = SentimentIntensityAnalyzer() 
+
+# Function to analyze sentiment of user-provided sentences 
+def analyze_sentiment(): 
+while True: 
+# Read user input 
+sentence = input("Enter a sentence (or type 'exit' to quit): ") 
+
+# Check if the user wants to exit 
+if sentence.lower() == 'exit': 
+break
+ 
+# Get the sentiment score 
+sentiment_score = sid.polarity_scores(sentence) 
+
+# Determine isentiment 
+if sentiment_score['compound'] >= 0.05: 
+print('sentiment: Positive')elif sentiment_score['compound'] <= -0.05: 
+print('sentiment: Negative') 
+else: 
+print('sentiment: Neutral') 
+print() 
+
+# Call the function to start analyzing sentiment 
+analyze_sentiment() 
+
+
